@@ -1,0 +1,4 @@
+Chapter 2
+
+Notice the DbContext,  here we use IdentityContext
+so that the system has build several tables for us.
