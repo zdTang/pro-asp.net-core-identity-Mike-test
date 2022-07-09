@@ -2,3 +2,18 @@ Chapter 2
 
 Notice the DbContext,  here we use IdentityContext
 so that the system has build several tables for us.
+
+--About [Authorize]
+Once using it, if the user has not been signed. it will be redirectd into login page 
+
+--Add a new Task item
+  two request,
+  the first request is "add the new tesk"
+  the second one is "redirect to " OnGet and re-display the updated data Model
+--Using Debugger in VS code
+  Vs code created two JSON config files,   I am not informed to "attach to" certain process this time
+
+Chapter 3
+
+--Create a brand new project
+  very basic function, only one request.
