@@ -1,19 +1,60 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IdentityTodo.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace IdentityTodo.Pages;
+namespace IdentityTodo.Pages {
+    // Notice, the [Authorize] is vital
+    // Without it, will not ask user to input userName and password
+    [Authorize]
+    public class IndexModel : PageModel {
+        private ApplicationDbContext Context;
 
-public class IndexModel : PageModel
-{
-    private readonly ILogger<IndexModel> _logger;
+        public IndexModel(ApplicationDbContext ctx) {
+            Context = ctx;
+        }
 
-    public IndexModel(ILogger<IndexModel> logger)
-    {
-        _logger = logger;
-    }
+        [BindProperty(SupportsGet = true)]
+        public bool ShowComplete { get; set; }
 
-    public void OnGet()
-    {
+        public IEnumerable<TodoItem> TodoItems { get; set; }
 
+        public void OnGet() {
+            TodoItems = Context.TodoItems
+                .Where(t => t.Owner == User.Identity.Name).OrderBy(t => t.Task);
+            if (!ShowComplete) {
+                TodoItems = TodoItems.Where(t => !t.Complete);
+            }
+            TodoItems = TodoItems.ToList();
+        }
+
+        public IActionResult OnPostShowComplete() {
+            return RedirectToPage(new { ShowComplete });
+        }
+
+        public async Task<IActionResult> OnPostAddItemAsync(string task) {
+            if (!string.IsNullOrEmpty(task)) {
+                TodoItem item = new TodoItem {
+                    Task = task,
+                    Owner = User.Identity.Name,
+                    Complete = false
+                };
+                await Context.AddAsync(item);
+                await Context.SaveChangesAsync();
+            }
+            return RedirectToPage(new { ShowComplete });
+        }
+
+        public async Task<IActionResult> OnPostMarkItemAsync(long id) {
+            TodoItem item = Context.TodoItems.Find(id);
+            if (item != null) {
+                item.Complete = !item.Complete;
+                await Context.SaveChangesAsync();
+            }
+            return RedirectToPage(new { ShowComplete });
+        }
     }
 }
