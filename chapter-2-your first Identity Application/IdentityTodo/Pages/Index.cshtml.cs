@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace IdentityTodo.Pages {
     // Notice, the [Authorize] is vital
@@ -19,7 +17,9 @@ namespace IdentityTodo.Pages {
 
         [BindProperty(SupportsGet = true)]
         public bool ShowComplete { get; set; }
-
+        // Must understand the data flow
+        // every time we add a new item, the TodoItems will be updated
+        // and then be redirected to OnGet and display the new TodoItems
         public IEnumerable<TodoItem> TodoItems { get; set; }
 
         public void OnGet() {
