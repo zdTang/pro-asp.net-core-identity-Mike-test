@@ -2,3 +2,6 @@ Chapter 2
 
 Notice the DbContext,  here we use IdentityContext
 so that the system has build several tables for us.
+
+--About [Authorize]
+Once using it, if the user has not been signed. it will be redirectd into login page
