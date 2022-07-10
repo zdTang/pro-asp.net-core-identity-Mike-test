@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace IdentityApp.Pages {
 
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminModel : PageModel {
 
         public AdminModel(ProductDbContext ctx) => DbContext = ctx;
