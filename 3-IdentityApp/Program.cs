@@ -10,13 +10,13 @@ builder.Services.AddDbContext<ProductDbContext>(opts => {
         builder.Configuration["ConnectionStrings:AppDataConnection"]);
 });
 
-// builder.Services.AddHttpsRedirection(opts => {
-//     opts.HttpsPort = 44350;
-// });
+builder.Services.AddHttpsRedirection(opts => {
+    opts.HttpsPort = 44350; // override defautl HTTPS PORT 443
+});
 
 var app = builder.Build();
-
-//app.UseHttpsRedirection();
+// once the server receive a HTTP request, will be redirect to HTTPS
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 //app.UseAuthentication();
