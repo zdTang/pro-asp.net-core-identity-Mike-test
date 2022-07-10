@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace IdentityApp.Pages {
 
-    [Authorize]
+    //[Authorize]
     public class StoreModel : PageModel {
         public StoreModel(ProductDbContext ctx) => DbContext = ctx;
 

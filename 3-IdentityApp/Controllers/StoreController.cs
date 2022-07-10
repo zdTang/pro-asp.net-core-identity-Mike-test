@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace IdentityApp.Controllers {
 
-    [Authorize]
+    //[Authorize]
     public class StoreController : Controller {
         private ProductDbContext DbContext;
 

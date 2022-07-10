@@ -10,17 +10,17 @@ builder.Services.AddDbContext<ProductDbContext>(opts => {
         builder.Configuration["ConnectionStrings:AppDataConnection"]);
 });
 
-builder.Services.AddHttpsRedirection(opts => {
-    opts.HttpsPort = 44350;
-});
+// builder.Services.AddHttpsRedirection(opts => {
+//     opts.HttpsPort = 44350;
+// });
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
