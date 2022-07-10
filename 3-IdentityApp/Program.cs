@@ -1,8 +1,8 @@
-using IdentityApp.Models;
 using Microsoft.EntityFrameworkCore;
+using IdentityApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-// Here to setup Services
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ProductDbContext>(opts => {
@@ -15,7 +15,7 @@ builder.Services.AddHttpsRedirection(opts => {
 });
 
 var app = builder.Build();
-// Here to setup pipeline
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -24,6 +24,5 @@ app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
-//app.MapGet("/", () => "Hello World!");
 
 app.Run();

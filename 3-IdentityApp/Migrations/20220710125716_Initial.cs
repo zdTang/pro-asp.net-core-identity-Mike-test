@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace _3_IdentityApp.Migrations
+namespace IdentityApp.Migrations
 {
     public partial class Initial : Migration
     {
@@ -14,9 +14,9 @@ namespace _3_IdentityApp.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

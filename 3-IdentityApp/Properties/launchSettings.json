@@ -8,18 +8,18 @@
     }
   },
   "profiles": {
-    "_3_IdentityApp": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
+    "IIS Express": {
+      "commandName": "IISExpress",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000;https://localhost:44350",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
+    "IdentityApp": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:5000;https://localhost:44350",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

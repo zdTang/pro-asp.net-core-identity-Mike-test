@@ -13,7 +13,7 @@ namespace IdentityApp.Pages {
         public ProductDbContext DbContext { get; set; }
 
         public IActionResult OnPost(long id) {
-            Product p = DbContext.Find<Product>(id);
+            Product? p = DbContext.Find<Product>(id);
             if (p != null) {
                 DbContext.Remove(p);
                 DbContext.SaveChanges();

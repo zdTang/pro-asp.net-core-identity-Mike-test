@@ -11,7 +11,7 @@ namespace IdentityApp.Pages {
         public EditModel(ProductDbContext ctx) => DbContext = ctx;
 
         public ProductDbContext DbContext { get; set; }
-        public Product Product { get; set; }
+        public Product Product { get; set; } = new();
 
         public void OnGet(long id) {
             Product = DbContext.Find<Product>(id) ?? new Product();

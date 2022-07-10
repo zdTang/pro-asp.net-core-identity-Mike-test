@@ -1,5 +1,4 @@
-
-@model IQueryable<Product>
+﻿@model IQueryable<Product>
 
 <h4 class="bg-primary text-white text-center p-2">MVC Level 3 - Administrators</h4>
 
@@ -12,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Product p in Model.OrderBy(p => p.Id)) {
+            @foreach (Product p in Model?.OrderBy(p => p.Id) ?? Enumerable.Empty<Product>()) {
                 <tr>
                     <td>@p.Id</td>
                     <td>@p.Name</td>

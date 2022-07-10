@@ -1,4 +1,4 @@
-using IdentityApp.Models;
+﻿using IdentityApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityApp.Controllers {

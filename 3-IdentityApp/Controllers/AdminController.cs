@@ -1,4 +1,4 @@
-using IdentityApp.Models;
+﻿using IdentityApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
@@ -17,7 +17,7 @@ namespace IdentityApp.Controllers {
 
         [HttpGet]
         public IActionResult Edit(long id) {
-            Product p = DbContext.Find<Product>(id);
+            Product? p = DbContext.Find<Product>(id);
             if (p != null) {
                 return View("Edit", p);
             }
@@ -33,7 +33,7 @@ namespace IdentityApp.Controllers {
 
         [HttpPost]
         public IActionResult Delete(long id) {
-            Product p = DbContext.Find<Product>(id);
+            Product? p = DbContext.Find<Product>(id);
             if (p != null) {
                 DbContext.Remove(p);
                 DbContext.SaveChanges();
